@@ -1,24 +1,28 @@
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import Home from "./routes/Home";
 import QuizScreen from "./routes/QuizScreen";
-
-const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Home />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/quiz",
-		element: <QuizScreen />,
-	},
-]);
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+	const [confirmedParams, setConfirmedParams] = useState(null);
+
 	return (
-		<div className="w-screen h-screen flex justify-center items-center bg-indigo-400 font-inter ">
-			<RouterProvider router={router} />
+		<div className="w-screen h-screen bg-indigo-400 font-inter overflow-auto ">
+			<BrowserRouter>
+				<Routes>
+					<Route
+						path="/"
+						element={<Home setConfirmedParams={setConfirmedParams} />}
+					/>
+					<Route
+						path="/quiz"
+						element={<QuizScreen confirmedParams={confirmedParams} />}
+					/>
+					<Route path="error" element={<ErrorPage />} />
+					<Route path="*" element={<ErrorPage />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

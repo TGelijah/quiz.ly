@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Home(props) {
 	const [userChoice, setUserChoice] = useState(false);
 	const params = {
 		amount: "",
@@ -9,8 +10,13 @@ function Home() {
 		type: "default",
 	};
 
-	const [quizParams, setQuizParams] = useState(params);
-	const [confirmedParams, setConfirmedParams] = useState([]);
+	const [quizParams, setQuizParams] = useState({
+		amount: String(Math.ceil(Math.random() * 50)),
+		category: "",
+		difficulty: "",
+		type: "",
+	});
+	const navigate = useNavigate();
 
 	const changeHandler = (e) => {
 		setQuizParams((prevState) => {
@@ -18,34 +24,23 @@ function Home() {
 		});
 	};
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
-		if (!userChoice) {
-			setQuizParams(() => {
-				return {
-					amount: String(Math.ceil(Math.random() * 50)),
-					category: "",
-					difficulty: "",
-					type: "",
-				};
-			});
-			setConfirmedParams(() => quizParams);
+		if (
+			quizParams.category === "default" ||
+			quizParams.difficulty === "default" ||
+			quizParams.type === "default"
+		) {
+			alert("All fields are required");
+			return;
 		} else {
-			if (
-				quizParams.category === "default" ||
-				quizParams.difficulty === "default" ||
-				quizParams.type === "default"
-			) {
-				alert("All fields are required");
-			} else {
-				setConfirmedParams(() => quizParams);
-				setQuizParams(params);
-			}
+			props.setConfirmedParams(quizParams);
+			navigate("/quiz");
 		}
 	};
 
 	return (
-		<div className=" w-full sm:w-4/6 h-full flex flex-col text-center items-center text-stone-800 bg-stone-100 rounded-sm shadow-md justify-center ">
+		<div className=" w-full sm:w-4/6 h-full flex flex-col text-center items-center text-stone-800 bg-stone-100 rounded-sm shadow-md m-auto justify-center ">
 			<h1 className="mt-4 select-none text-[22.5px] xl:text-[45px] uppercase  font-semibold tracking-wider underline ">
 				Welcome to Quizly
 			</h1>
@@ -56,7 +51,19 @@ function Home() {
 			</h2>
 			<h3
 				className=" cursor-pointer mt-3 "
-				onClick={() => setUserChoice((prevState) => !prevState)}
+				onClick={() => {
+					setUserChoice((prevState) => !prevState);
+					if (userChoice) {
+						setQuizParams({
+							amount: String(Math.ceil(Math.random() * 50)),
+							category: "",
+							difficulty: "",
+							type: "",
+						});
+					} else {
+						setQuizParams(params);
+					}
+				}}
 			>
 				Change My Fate
 			</h3>
@@ -142,7 +149,7 @@ function Home() {
 					type="submit"
 					className=" border-b-2 w-[40%] sm:w-[25%] xl:w-[13%] border-black "
 				>
-					Continue &gt;&gt;
+					Continue &gt;
 				</button>
 			</form>
 		</div>
