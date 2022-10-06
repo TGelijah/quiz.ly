@@ -11,7 +11,15 @@ function App() {
   const [score, setScore] = useState({});
 
   return (
-    <div className='w-screen h-screen bg-[url("./assets/background.jpg")] font-inter overflow-auto '>
+    <div className='w-screen h-screen relative bg-[url("./assets/background.jpg")] font-inter overflow-auto '>
+      <div className=" w-[150px] h-1/6 text-center text-sm absolute bottom-10 flex items-center right-4 bg-[rgba(234,234,203,0.5)] text-red-600 shadow-xl font-bold tracking-wide hover:scale-105 hover:shadow-slate-500 ">
+        <a
+          href="https://github.com/glorious-elijah/quiz.ly/issues"
+          target="_blank"
+        >
+          👍🏾 make a feature 💡 or report 🪲!
+        </a>
+      </div>
       <BrowserRouter>
         <Routes>
           <Route
