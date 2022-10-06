@@ -43,7 +43,7 @@ function Score(props) {
 
   return (
     <div className=" w-full h-full flex flex-col justify-center items-center ">
-      <div className="  bg-[rgba(100,25,30,0.1)] shadow-md rounded-md  w-1/3 h-1/2 ">
+      <div className="  bg-[rgba(100,25,30,0.1)] shadow-md rounded-md w-[90%] sm:w-1/2 xl:w-1/3 h-1/2 ">
         <div className=" w-full h-5/6 text-xl text-stone-800 flex flex-col justify-center items-center ">
           <p>
             Time Elapsed:{" "}

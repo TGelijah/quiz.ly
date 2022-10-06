@@ -15,9 +15,9 @@ function Question(props) {
           dangerouslySetInnerHTML={{ __html: props.question }}
         />
       </div>
-      <form className=" grid grid-cols-2 grid-rows-1 mt-2 px-12 ">
+      <form className=" grid grid-cols-2 grid-rows-1 mt-2 px-2 lg:px-8 ">
         {props.allAnswers.map((answer, index) => (
-          <div className=" w-full h-full ">
+          <div className=" w-full h-full p-2 ">
             <input
               key={index}
               type="radio"
