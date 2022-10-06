@@ -40,8 +40,8 @@ function Home(props) {
 	};
 
 	return (
-		<div className=" w-full sm:w-4/6 h-full flex flex-col text-center items-center text-stone-800 bg-stone-100 rounded-sm shadow-md m-auto justify-center ">
-			<h1 className="mt-4 select-none text-[22.5px] xl:text-[45px] uppercase  font-semibold tracking-wider underline ">
+		<div className=" w-full sm:w-4/6 h-full flex flex-col text-center items-center bg-opacity-75 text-stone-800 bg-stone-100 rounded-sm shadow-xl m-auto justify-center ">
+			<h1 className="mt-4 select-none text-[22.5px] xl:text-[45px] uppercase font-semibold tracking-wider underline ">
 				Welcome to Quizly
 			</h1>
 			<h2 className=" mt-2 text-[15px] xl:text-[20px] text-stone-600 ">
