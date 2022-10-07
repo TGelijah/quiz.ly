@@ -27,7 +27,7 @@ Users can opt-in or opt-out from random number of question allocation and defaul
 - ReactJS
 - React-router
 - Tailwind CSS
-- Netlify
+- [Netlify](netlify.com)[for drag and drop deployment 😉]
 
 ## Issues
 
