@@ -31,6 +31,7 @@ function App() {
             element={
               <QuizScreen
                 confirmedParams={confirmedParams}
+                setConfirmedParams={setConfirmedParams}
                 setTime={setTime}
                 setScore={setScore}
               />

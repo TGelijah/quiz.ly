@@ -87,6 +87,14 @@ function QuizScreen(props) {
           navigate("/error");
         });
     }
+    return () => {
+      props.setConfirmedParams({
+        amount: "",
+        category: "default",
+        difficulty: "default",
+        type: "default",
+      });
+    };
   }, []);
 
   useEffect(() => {
