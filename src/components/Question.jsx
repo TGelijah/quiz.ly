@@ -17,9 +17,8 @@ function Question(props) {
       </div>
       <form className=" grid grid-cols-2 grid-rows-1 mt-2 px-2 lg:px-8 ">
         {props.allAnswers.map((answer, index) => (
-          <div className=" w-full h-full p-2 ">
+          <div key={index} className=" w-full h-full p-2 ">
             <input
-              key={index}
               type="radio"
               name="answers"
               id={answer}
