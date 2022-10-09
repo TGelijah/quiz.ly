@@ -1,11 +1,24 @@
-import React from "react";
-
+import { useState } from "react";
 function Question(props) {
+  const [answered, setAnswered] = useState(false);
+  const [rightAnswer, setRightAnswer] = useState(null);
+
   function checkAnswer(e) {
+    setAnswered(true);
     if (e.target.value === props.correctAnswer) {
       props.setCountRightAnswers((prevState) => prevState + 1);
+      setRightAnswer(true);
+      return;
+    }
+    setRightAnswer(false);
+  }
+
+  function test(answer) {
+    if (answer === props.correctAnswer) {
+      return true;
     }
   }
+
   return (
     <article className=" w-full h-auto mt-4 px-4 ">
       <div className=" w-full h-auto flex ">
@@ -24,6 +37,12 @@ function Question(props) {
               id={props.number + String(index)}
               onClick={checkAnswer}
               value={answer}
+              disabled={answered}
+              className={
+                rightAnswer
+                  ? ` text-green-500 checked:text-green-500 disabled:opacity-50`
+                  : ` text-red-500 checked:text-red-500 disabled:opacity-50`
+              }
             />
             <label
               htmlFor={props.number + String(index)}
