@@ -16,7 +16,6 @@ Users can opt-in or opt-out from random number of question allocation and defaul
 
 ## future Features
 
-- Loading screen
 - Pause game
 - Storing session to retrieve later
 - Leaderboard ranking
