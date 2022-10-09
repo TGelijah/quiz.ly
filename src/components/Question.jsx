@@ -20,13 +20,13 @@ function Question(props) {
           <div key={index} className=" w-full h-full p-2 ">
             <input
               type="radio"
-              name="answers"
-              id={answer}
+              name={props.number}
+              id={props.number + String(index)}
               onClick={checkAnswer}
               value={answer}
             />
             <label
-              htmlFor={answer}
+              htmlFor={props.number + String(index)}
               dangerouslySetInnerHTML={{ __html: answer }}
               className=" ml-2 select-none "
             />
